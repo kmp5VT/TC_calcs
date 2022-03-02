@@ -1,0 +1,61 @@
+{
+  "units": "2010CODATA",
+  "atoms": {
+    "file_name": "geoms/he2.xyz",
+    "sort_input": true,
+    "charge": 0,
+    "n_cluster": 2,
+    "reblock" : 4
+  },
+  "obs": {
+    "name": "6-31g",
+    "atoms": "$:atoms"
+  },
+  "dfbs": {
+    "name": "aug-cc-pvdz-ri",
+    "atoms": "$:atoms"
+  },
+  "wfn_world":{
+    "atoms" : "$:atoms",
+    "basis" : "$:obs",
+    "df_basis" :"$:dfbs",
+    "screen": "schwarz"
+  },
+  "scf":{
+    "type": "DF-RHF",
+    "wfn_world": "$:wfn_world"
+  },
+  "wfn":{
+    "type": "CCSD(T)",
+    "coarse grain": false,
+    "wfn_world": "$:wfn_world",
+    "atoms" : "$:atoms",
+    "ref": "$:scf",
+    "method" : "df",
+    "approach" : "laplace",
+    "quadrature_points" : 5,
+    "reduced_abcd_memory" : "true",
+    "cp_ccsd" : false,
+    "cp_ccsd_t": true,
+    "cp3_rank" : 0.75,
+    "cp4_rank" : 1.0, 
+    "cp3_precision" : "1e-3",
+    "occ_block_size" : 10,
+    "unocc_block_size" : 35,
+    "rank_block_factor" : 5,
+    "had_block_size" : 35,
+    "max_iter" : 30,
+    "reblock_size" : 20,
+    "reblock_occ_size" : 2,
+    "localizers": {
+              "type": "FBLocalizer",
+              "wfn_world": "$:wfn_world"
+    },
+    "export_orbitals": false
+    },
+  "property" : {
+    "type" : "Energy",
+    "precision" : "1e-1",
+    "wfn" : "$:wfn"
+  }
+}

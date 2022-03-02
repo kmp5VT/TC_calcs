@@ -1,0 +1,61 @@
+{
+    "atoms": {
+        "charge": 0,
+        "file_name": "h2.xyz",
+        "n_cluster": 2,
+        "reblock": 4,
+        "sort_input": true
+    },
+    "dfbs": {
+        "atoms": "$:atoms",
+        "name": "cc-pVQZ-RI"
+    },
+    "obs": {
+        "atoms": "$:atoms",
+        "name": "cc-pVQZ"
+    },
+    "property": {
+        "precision": "1e-1",
+        "type": "Energy",
+        "wfn": "$:wfn"
+    },
+    "scf": {
+        "type": "DF-RHF",
+        "wfn_world": "$:wfn_world"
+    },
+    "units": "2010CODATA",
+    "wfn": {
+        "approach": "laplace",
+        "atoms": "$:atoms",
+        "coarse grain": false,
+        "cp3_precision": "1e-3",
+        "cp3_rank": 0.75,
+        "cp4_rank": 1.0,
+        "cp_ccsd": false,
+        "cp_ccsd_t": true,
+        "export_orbitals": false,
+        "had_block_size": 35,
+        "localizers": {
+            "type": "FBLocalizer",
+            "wfn_world": "$:wfn_world"
+        },
+        "max_iter": 30,
+        "method": "df",
+        "occ_block_size": 10,
+        "quadrature_points": 5,
+        "rank_block_factor": 5,
+        "reblock_occ_size": 2,
+        "reblock_size": 20,
+        "reduced_abcd_memory": "true",
+        "ref": "$:scf",
+        "type": "CCSD(T)",
+        "unocc_block_size": 35,
+        "wfn_world": "$:wfn_world"
+    },
+    "wfn_world": {
+        "atoms": "$:atoms",
+        "basis": "$:obs",
+        "df_basis": "$:dfbs",
+        "screen": "schwarz"
+    }
+}
